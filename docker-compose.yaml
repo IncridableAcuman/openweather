@@ -1,0 +1,19 @@
+services:
+  weather:
+    build: ./weather
+    container_name: weather
+    restart: always
+    env_file:
+      - ./weather/.env
+    ports:
+      - "${PORT}:${PORT}"
+    depends_on:
+      - client
+  client:
+    build: ./client
+    container_name: client
+    restart: always
+    env_file:
+      - ./client/.env
+    ports:
+      - "80:5000"

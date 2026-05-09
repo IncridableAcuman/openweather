@@ -27,3 +27,11 @@ npm run dev
 App will be available at http://localhost:5173
 
 ## 📁 Project Structure
+```text
+openweather/
+|---client/
+|---weather/
+|---src/
+|---docker-compose.yaml
+|---README.md
+```

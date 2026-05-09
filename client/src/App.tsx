@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import {  useState, type KeyboardEvent } from "react";
 import type WeatherDto from "./interface/weather.interface";
 import axios from "axios";
 
@@ -16,8 +16,11 @@ const App = () =>{
         }
     }
 
-
-    console.log(weather);
+    const handleKeyDown = async (event: KeyboardEvent<HTMLInputElement>) => {
+            if (event.key === 'Enter'){
+               await getWeather();
+            }
+    }
 
     return (
         <>
@@ -42,12 +45,12 @@ const App = () =>{
                            placeholder={"Enter your city or country...."}
                             className={"outline-none w-full bg-transparent"}
                             value={search}
+                                  onKeyDown={handleKeyDown}
                             onChange={(e)=>setSearch(e.target.value)}
                              />
                            <button
                                type={"submit"}
                                onClick={getWeather}
-                               onMouseEnter={getWeather}
                                className={"bg-blue-500 text-white px-8 text-sm py-4 rounded-md"}>Search</button>
                        </div>
                    </div>

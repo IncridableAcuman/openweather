@@ -1,3 +1,12 @@
 spring:
   application:
     name: weather
+
+server:
+  port: ${PORT}
+
+
+open:
+  weather:
+    key: ${KEY}
+    url: ${URL}

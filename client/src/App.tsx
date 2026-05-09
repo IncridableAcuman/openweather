@@ -25,7 +25,7 @@ const App = () =>{
                <div className={"w-full max-w-3xl mx-auto shadow-lg text-center"}>
                    <h2 className={"text-3xl font-extrabold text-blue-600"}>{weather?.name ?? "Your City"} <span className="text-blue-900">({weather?.sys.country ?? "UZ"})</span></h2>
                    <h1 className={"text-6xl font-extrabold py-6"}>{weather?.main.temp ?? 0}°C</h1>
-                   <div className="flex items-center justify-between gap-3 px-6">
+                   <div className="space-y-4 px-6">
                     <div className="shadow-md border border-blue-200 rounded-md p-4 hover:shadow-lg transition duration-300 w-full text-lg font-semibold">
                         <p>Feels Like: <span>{weather?.main.feels_like ?? 0}°C</span></p>
                     </div>

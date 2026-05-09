@@ -1,15 +1,54 @@
+import {  useState } from "react";
+import type WeatherDto from "./interface/weather.interface";
+import axios from "axios";
 
 const App = () =>{
+    const [weather,setWeather]=useState<WeatherDto>();
+    const [search,setSearch]=useState("");
+
+
+        const getWeather = async () => {
+        try {
+            const {data} = await axios.get(`http://localhost:8080/api/v1/weather?q=${search}`);
+            setWeather(data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
+    console.log(weather);
+
     return (
         <>
-           <div className={"w-full h-screen flex flex-col items-center justify-center"}>
+           <div className={"w-full h-screen flexing"}>
                <div className={"w-full max-w-3xl mx-auto shadow-lg text-center"}>
-                   <h2 className={"text-3xl font-extrabold text-blue-600"}>Tashkent City</h2>
-                   <h1 className={"text-6xl font-extrabold py-6"}>0C</h1>
+                   <h2 className={"text-3xl font-extrabold text-blue-600"}>{weather?.name ?? "Your City"} <span className="text-blue-900">({weather?.sys.country ?? "UZ"})</span></h2>
+                   <h1 className={"text-6xl font-extrabold py-6"}>{weather?.main.temp ?? 0}°C</h1>
+                   <div className="flex items-center justify-between gap-3 px-6">
+                    <div className="shadow-md border border-blue-200 rounded-md p-4 hover:shadow-lg transition duration-300 w-full text-lg font-semibold">
+                        <p>Feels Like: <span>{weather?.main.feels_like ?? 0}°C</span></p>
+                    </div>
+                    <div className="shadow-md border border-blue-200 rounded-md p-4 hover:shadow-lg transition duration-300 w-full text-lg font-semibold">
+                        <p>Humidity: <span>{weather?.main.humidity ?? 0}%</span></p>
+                    </div>
+                    <div className="shadow-md border border-blue-200 rounded-md p-4 hover:shadow-lg transition duration-300 w-full text-lg font-semibold">
+                        <p>Wind: <span>{weather?.wind.speed ?? 0}km/h</span></p>
+                    </div>
+                   </div>
                    <div className={"w-full p-5"}>
-                       <div className={"flex items-center gap-2 border border-blue-500 p-2 rounded-md"}>
-                           <input type={"text"} placeholder={"Search your city...."} className={"outline-none w-full bg-transparent"} />
-                           <button className={"bg-blue-500 text-white px-8 text-sm py-4 rounded-md"}>Search</button>
+                       <div className={"flex items-center gap-2 border border-blue-200 p-2 rounded-md"}>
+                           <input type={"text"} 
+                           placeholder={"Enter your city or country...."}
+                            className={"outline-none w-full bg-transparent"}
+                            value={search}
+                            onChange={(e)=>setSearch(e.target.value)}
+                             />
+                           <button
+                               type={"submit"}
+                               onClick={getWeather}
+                               onMouseEnter={getWeather}
+                               className={"bg-blue-500 text-white px-8 text-sm py-4 rounded-md"}>Search</button>
                        </div>
                    </div>
                </div>

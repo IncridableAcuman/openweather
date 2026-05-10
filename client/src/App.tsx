@@ -10,7 +10,7 @@ const App = () =>{
 
         const getWeather = async () => {
         try {
-            const {data} = await axios.get(`/api/v1/weather?q=${search}`);
+            const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/weather?q=${search}`);
             setWeather(data);
         } catch (error) {
             toast.error("Something went wrong!");

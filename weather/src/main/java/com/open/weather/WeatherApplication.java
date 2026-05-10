@@ -9,10 +9,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class WeatherApplication {
 
 	public static void main(String[] args) {
-		Dotenv dotenv = Dotenv.load();
-		for (DotenvEntry entry: dotenv.entries()){
-			System.setProperty(entry.getKey(),entry.getValue());
-		}
+//		Dotenv dotenv = Dotenv.load();
+//		for (DotenvEntry entry: dotenv.entries()){
+//			System.setProperty(entry.getKey(),entry.getValue());
+//		}
 		SpringApplication.run(WeatherApplication.class, args);
 	}
 

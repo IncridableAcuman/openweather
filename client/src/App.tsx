@@ -10,7 +10,7 @@ const App = () =>{
 
         const getWeather = async () => {
         try {
-            const {data} = await axios.get(`http://localhost:8080/api/v1/weather?q=${search}`);
+            const {data} = await axios.get(`/api/v1/weather?q=${search}`);
             setWeather(data);
         } catch (error) {
             toast.error("Something went wrong!");
@@ -30,6 +30,7 @@ const App = () =>{
                <div className={"w-full max-w-3xl mx-auto shadow-md text-center border border-blue-200 rounded-md p-4 hover:shadow-lg transition duration-300"}>
                    <h2 className={"text-3xl font-extrabold text-blue-600"}>{weather?.name ?? "Your City"} <span className="text-blue-900">({weather?.sys.country ?? "UZ"})</span></h2>
                    <h1 className={"text-6xl font-extrabold py-6"}>{weather?.main.temp ?? 0}°C</h1>
+                   <h2>{weather?.weather[0]?.main}</h2>
                    <div className="space-y-4 px-6">
                     <div className="shadow-md border border-blue-200 rounded-md p-4 hover:shadow-lg transition duration-300 w-full text-lg font-semibold">
                         <p>Feels Like: <span>{weather?.main.feels_like ?? 0}°C</span></p>

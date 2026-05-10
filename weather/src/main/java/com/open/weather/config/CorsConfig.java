@@ -19,7 +19,7 @@ public class CorsConfig {
         configuration.setExposedHeaders(List.of("*"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
-        configuration.setAllowedOrigins(List.of("http://localhost:80","http://localhost:5173"));
+        configuration.setAllowedOrigins(List.of("http://localhost:80","http://localhost:5173","https://izzatbek-openweather.onrender.com"));
         
         source.registerCorsConfiguration("/**",configuration);
 

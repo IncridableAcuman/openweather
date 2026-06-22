@@ -1,3 +1,6 @@
-spring:
-  application:
-    name: backend
+server:
+  port: ${PORT}
+
+weather:
+  key: ${API_KEY}
+  url: ${API_URL}

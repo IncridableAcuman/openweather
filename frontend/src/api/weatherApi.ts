@@ -5,7 +5,7 @@ import type { WeatherData, ForecastData } from '../types/weather';
 const RAW_URL: string =
   (import.meta.env.VITE_API_URL as string | undefined) ||
   (import.meta.env.VITE_API_BASE_URL as string | undefined) ||
-  'http://localhost:8080';
+  'https://openweather-backend-46nb.onrender.com';
 
 // Protocol (http:// yoki https://) bo'lmasa, avtomatik https:// qo'shish
 const WITH_PROTO = RAW_URL.startsWith('http://') || RAW_URL.startsWith('https://')

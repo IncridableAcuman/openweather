@@ -6,12 +6,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-
 @Configuration
 public class CorsConfig {
 
     @Bean
-    public WebMvcConfigurer webMvcConfigurer(){
+    public WebMvcConfigurer webMvcConfigurer() {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(@NonNull CorsRegistry registry) {
@@ -19,8 +18,8 @@ public class CorsConfig {
                         .addMapping("/**")
                         .allowCredentials(true)
                         .allowedHeaders("*")
-                        .allowedMethods("GET")
-                        .allowedOrigins("http://localhost:5173")
+                        .allowedMethods("GET", "POST", "OPTIONS")
+                        .allowedOriginPatterns("*")
                         .maxAge(3600);
             }
         };

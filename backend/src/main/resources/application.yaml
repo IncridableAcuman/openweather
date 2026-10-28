@@ -1,6 +1,7 @@
 server:
-  port: ${PORT}
+  port: ${PORT:8080}
 
 weather:
-  key: ${API_KEY}
-  url: ${API_URL}
+  key: ${API_KEY:caa78e410727423502f6d7225aced2b4}
+  url: ${API_URL:https://api.openweathermap.org/data/2.5/weather}
+  forecast-url: ${API_FORECAST_URL:https://api.openweathermap.org/data/2.5/forecast}

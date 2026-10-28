@@ -1,0 +1,27 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: openweather-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - API_KEY=caa78e410727423502f6d7225aced2b4
+      - API_URL=https://api.openweathermap.org/data/2.5/weather
+      - API_FORECAST_URL=https://api.openweathermap.org/data/2.5/forecast
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_URL=http://localhost:8080
+    container_name: openweather-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped

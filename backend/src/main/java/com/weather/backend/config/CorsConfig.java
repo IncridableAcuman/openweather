@@ -19,7 +19,7 @@ public class CorsConfig {
                         .allowCredentials(true)
                         .allowedHeaders("*")
                         .allowedMethods("GET", "POST", "OPTIONS")
-                        .allowedOriginPatterns("*")
+                        .allowedOriginPatterns("https://weatherflow-iden.onrender.com")
                         .maxAge(3600);
             }
         };
